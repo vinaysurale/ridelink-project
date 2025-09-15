@@ -1,0 +1,1 @@
+web: gunicorn ridelink_project.wsgi
