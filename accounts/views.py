@@ -2,20 +2,20 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
-from django.contrib.auth.decorators import login_required # Import this
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
 
-# This is our new home page view
 @login_required
 def home(request):
     return render(request, 'accounts/home.html')
 
-# This is our existing register view
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = False  # Deactivate account until admin approval
+            user.is_active = False
             user.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account for {username} created! Please wait for an admin to approve your registration.')
@@ -23,3 +23,11 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'accounts/register.html', {'form': form})
+
+# --- Add this new function at the bottom ---
+def create_superuser_temp(request):
+    User = get_user_model()
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'adminpassword')
+        return HttpResponse("Admin account created! You can now log in.")
+    return HttpResponse("Admin account already exists.")
