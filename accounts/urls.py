@@ -10,6 +10,3 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/login.html'), name='logout'),
     
-    # Add this temporary URL at the end
-    path('create-admin-12345/', create_superuser_temp, name='create-superuser-temp'),
-]

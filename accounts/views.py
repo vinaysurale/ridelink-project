@@ -23,11 +23,3 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'accounts/register.html', {'form': form})
-
-# --- Add this new function at the bottom ---
-def create_superuser_temp(request):
-    User = get_user_model()
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@example.com', 'adminpassword')
-        return HttpResponse("Admin account created! You can now log in.")
-    return HttpResponse("Admin account already exists.")
