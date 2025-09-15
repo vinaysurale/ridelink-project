@@ -18,8 +18,7 @@ SECRET_KEY = 'django-insecure-9*ous26d12t=^-g8q91z@y=_!4pt6ly0c&d=z13ar8p8t*^byx
 DEBUG = False
 
 # Important: ALLOWED_HOSTS is updated for deployment
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['ridelink-vinay.onrender.com', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
