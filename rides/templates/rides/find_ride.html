@@ -1,0 +1,25 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+    <h2 class="mb-4">Find a Ride</h2>
+
+    {% for ride in rides %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ ride.from_location }} to {{ ride.to_location }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Driver: {{ ride.driver.username }}</h6>
+                <p class="card-text">
+                    <strong>Date & Time:</strong> {{ ride.ride_datetime|date:"F d, Y, P" }}<br>
+                    <strong>Vehicle:</strong> {{ ride.vehicle_type }}<br>
+                    <strong>Seats Available:</strong> {{ ride.seats_available }}<br>
+                    <strong>Fare:</strong> ₹{{ ride.fare }}
+                </p>
+                <a href="#" onclick="alert('This feature is coming soon!'); return false;" class="btn btn-success">Request Ride</a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info">
+            No rides have been posted yet.
+        </div>
+    {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,9 @@
+# Database
+db.sqlite3
+
+# Python virtual environment
+venv/
+__pycache__/
+
+# Static files folder
+staticfiles/

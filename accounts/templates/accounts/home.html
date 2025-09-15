@@ -1,0 +1,21 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+    <h3 class="mb-4">Hello, {{ user.username }}!</h3>
+
+    <div class="list-group">
+        <a href="{% url 'post-ride' %}" class="list-group-item list-group-item-action">
+            <h5>Post a Ride</h5>
+            <p class="mb-1">Offer a ride to other users.</p>
+        </a>
+        <a href="{% url 'find-ride' %}" class="list-group-item list-group-item-action">
+            <h5>Find a Ride</h5>
+            <p class="mb-1">See all available rides from other users.</p>
+        </a>
+        <a href="{% url 'my-rides' %}" class="list-group-item list-group-item-action">
+            <h5>My History</h5> <p class="mb-1">View the history of rides you have posted.</p>
+        </a>
+        <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">
+            <h5>Logout</h5>
+        </a>
+    </div>
+{% endblock content %}
