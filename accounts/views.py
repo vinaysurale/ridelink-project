@@ -26,12 +26,3 @@ def register(request):
 # Add these imports at the top of the file if they are not there
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model
-
-# Add this new function at the very bottom
-def create_new_superuser_temp(request):
-    User = get_user_model()
-    # Let's use a new username to be safe
-    if not User.objects.filter(username='superuser').exists():
-        User.objects.create_superuser('superuser', 'super@user.com', 'superpassword123')
-        return HttpResponse("New superuser account created! Username: superuser, Password: superpassword123")
-    return HttpResponse("New superuser account already exists.")
