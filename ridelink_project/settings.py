@@ -18,7 +18,8 @@ SECRET_KEY = 'django-insecure-9*ous26d12t=^-g8q91z@y=_!4pt6ly0c&d=z13ar8p8t*^byx
 DEBUG = False
 
 # Important: ALLOWED_HOSTS is updated for deployment
-ALLOWED_HOSTS = ['ridelink-vinay.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*'] # The '*' allows all hosts for now.
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -108,6 +109,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Custom User Model
+AUTH_USER_MODEL = 'accounts.User'
+
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
-# Trigger new deploy

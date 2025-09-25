@@ -1,10 +1,9 @@
 # accounts/views.py
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm
+from .forms import CustomUserCreationForm # Changed this line
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-from django.contrib.auth import get_user_model
+# ... (keep any other functions you have like home, etc.)
 
 @login_required
 def home(request):
@@ -12,7 +11,7 @@ def home(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = CustomUserCreationForm(request.POST) # Changed this line
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
@@ -21,8 +20,5 @@ def register(request):
             messages.success(request, f'Account for {username} created! Please wait for an admin to approve your registration.')
             return redirect('login')
     else:
-        form = UserRegisterForm()
+        form = CustomUserCreationForm() # Changed this line
     return render(request, 'accounts/register.html', {'form': form})
-# Add these imports at the top of the file if they are not there
-from django.http import HttpResponse
-from django.contrib.auth import get_user_model
