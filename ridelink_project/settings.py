@@ -12,7 +12,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 # Add your Render domain to ALLOWED_HOSTS
-ALLOWED_HOSTS = ['ridelink-vinay.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ridelink-vinay.onrender.com']
 
 
 # Application definition
